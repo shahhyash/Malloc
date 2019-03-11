@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 #define TEST_MSG 0
 #define COLLECT_DATA 0
@@ -434,7 +435,7 @@ int grind(int num_tests)
         D_avg /= (double) num_tests;
         E_avg /= (double) num_tests;
         F_avg /= (double) num_tests;
-        printf("\nTEST A AVERAGE: %lf\nTEST B AVERAGE: %lf\nTEST C AVERAGE: %lf\nTEST D AVERAGE: %lf\nTEST E AVERAGE: %lf\nTEST F AVERAGE: %lf\n\n", A_avg, B_avg, C_avg, D_avg, E_avg, F_avg);
+        printf("%lf\n%lf\n%lf\n%lf\n%lf\n%lf\n", A_avg, B_avg, C_avg, D_avg, E_avg, F_avg);
         return 0;
 }
 
