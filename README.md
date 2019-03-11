@@ -85,7 +85,7 @@ This test comprised of us allocating one byte and immediately freeing it for 150
 
 We found that this test succeeded every time, and our implementation handled the workload efficiently enough. Due to the short runtime of this process, the spikes are fairly insignificant as it can easily be correlated to variations in the CPU cycles. However, you can notice that the very first iteration takes the longest as it needs to create a brand new data node to split up the reserved space into a block of one byte, and another block of the remaining bytes.
 
-<img src="./graph_A.png" width="60%">
+<img src="./graph_A.png" width="50%">
 
 ### Test B:
 
@@ -93,7 +93,7 @@ This test comprised of us allocating 150 one-byte spaces. We were asked to free 
 
 We found that this test succeeded every time, and our implementation was able to create 50 different data nodes consisting of one byte of reserved space for each of them. Upon freeing them, it wouldn't reset the heap structure, and each subsequent request of fifty one-byte blocks were handled quickly using the first-fit placement method. 
 
-<img src="./graph_B.png" width="60%">
+<img src="./graph_B.png" width="50%">
 
 ### Test C:
 
@@ -101,7 +101,7 @@ This test extended the previous test case by randomly allocating and freeing one
 
 We found that this test case presented an additional level of stress to our malloc implementation with its varied allocation and freeing. As a result, you'll find that the runtime for this test case is an entire order of magnitude higher than the previous ones. This makes sense as some test cases must have requested frequent freeing of allocated space.
 
-<img src="./graph_C.png" width="60%">
+<img src="./graph_C.png" width="50%">
 
 ### Test D:
 
@@ -109,15 +109,15 @@ This test comprises of randomly calling our implementation of malloc and free un
 
 We found that our implementation handled this test case gracefully and was able to successfully allocated up to fifty blocks of varied sizes. Notice that this additional variation caused us to use consistently create new blocks as well as defragment the heap structure, and as a result, each iteration of this test case had a runtime measured in milliseconds.
 
-<img src="./graph_D.png" width="60%">
+<img src="./graph_D.png" width="50%">
 
 ### Test E:
 
 This test comprises of allocating as many blocks as possible of a block size of 1 byte to a block size 4088 bytes. For example, we consistently allocate blocks of 1 byte until our heap structure does not have any available space. From this point, it will free all requested blocks of data and repeat the process for 2 byte blocks, and so on.
 
-We found that this added a unique stress load to our algorithm as each subsequent iteration requried our implementation to clean the blocks and start over. You'll notice that the time has less variations towards the end of our iterations and we believe that this dampening occurs due to 
+We found that this added a unique stress load to our algorithm as each subsequent iteration required our implementation to clean the blocks and start over, and as a result, each iteration had a runtime in tens of milliseconds.
 
-<img src="./graph_E.png" width="60%">
+<img src="./graph_E.png" width="50%">
 
 ### Test F:
 
@@ -128,4 +128,4 @@ This test comprises of triggering errors in our malloc and free implementations 
 - Calling `malloc` on invalid sizes
 - Calling `free` on a `NULL` pointer
 
-<img src="./graph_F.png" width="60%">
+<img src="./graph_F.png" width="50%">

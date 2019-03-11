@@ -1,0 +1,9 @@
+Test E:
+This test comprises of allocating as many blocks as possible of a block size of 1 byte to a block size 4088 bytes. For example, we consistently allocate blocks of 1 byte until our heap structure does not have any available space. From this point, it will free all requested blocks of data and repeat the process for 2 byte blocks, and so on.
+
+We included this test to allow us to stress out our implementation with varying block size requests. In addition, it allowed us to measure how space efficient our model is by allowing us to see how many blocks of each size our structure was able to allocate for.
+
+Test F:
+This test comprises of triggering errors in our malloc and free implementations by performing operations such as calling `free` on addresses that are not pointers, calling `free` on pointers not assigned by mymalloc, calling `free` on pointers after they have already been freed, and calling `malloc` on invalid sizes, calling `free` on a `NULL` pointer.
+
+We included this test to allow us to understand and account for different error cases that our implementation should be able to handle. 
